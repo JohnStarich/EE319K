@@ -25,10 +25,13 @@ public class LittleEndianToBigEndian {
 		lines.removeLast();
 		lines.removeLast();
 		for(String line : lines) {
-//			linesModified.add(line.substring(9, line.length()-2));
-			linesModified.add(line.substring(9, 17));
-			linesModified.add(line.substring(17, 25));
-			linesModified.add(line.substring(25, 33));
+			if(line != null) {
+				line = line.substring(9, 41);
+				linesModified.add(line.substring(0, 8));
+				linesModified.add(line.substring(8, 16));
+				linesModified.add(line.substring(16, 24));
+				linesModified.add(line.substring(24, 32));
+			}
 		}
 		return parseList(linesModified);
 	}
