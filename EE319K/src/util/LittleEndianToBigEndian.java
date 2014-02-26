@@ -25,12 +25,17 @@ public class LittleEndianToBigEndian {
 		lines.removeLast();
 		lines.removeLast();
 		for(String line : lines) {
-			if(line != null) {
-				line = line.substring(9, 41);
-				linesModified.add(line.substring(0, 8));
-				linesModified.add(line.substring(8, 16));
-				linesModified.add(line.substring(16, 24));
-				linesModified.add(line.substring(24, 32));
+			int length = line.length();
+			if(line != null && length >= 9) {
+				line = line.substring(9, length-2);
+				if(length >= 8)
+					linesModified.add(line.substring(0, 8));
+				if(length >= 16)
+					linesModified.add(line.substring(8, 16));
+				if(length >= 24)
+					linesModified.add(line.substring(16, 24));
+				if(length >= 32)
+					linesModified.add(line.substring(24, 32));
 			}
 		}
 		return parseList(linesModified);
